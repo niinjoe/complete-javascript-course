@@ -22,7 +22,7 @@
 // console.log(country, continent, population);
 // Declare a variable called isIsland and set its value according to your country. The variable should hold a Boolean value. Also declare a variable language, but don't assign it any value yet.
 // let isIsland = true;
-let language;
+/*let language;
 // Log the types of isIsland, population, country and language to the console.
 // console.log(typeof isIsland, typeof population, typeof country, typeof language)
 // Set the value of language to the language spoken where you live (some countries have multiple languages, but just choose one).
@@ -110,16 +110,42 @@ if (speaksEng === true && population1 < 50 && isIsland === false) {
 // arabic: '5th most spoken language';
 
 // for all other simply log 'Great language too :D'.
+*/
 
-let day = 'Wednesday';
+/* Use a switch statement to log the following string for the given language: */
 
-switch(day) {
-  case 'Monday':
-    console.log('Today is Monday');
+// Switch statement example:
+let day = "Wednesday";
+
+switch (day) {
+  case "Monday":
+    console.log("Today is Monday");
     break;
-  case 'Wednesday':
-    console.log('Today is Wednesday');
+  case "Wednesday":
+    console.log("Today is Wednesday");
     break;
   default:
-    console.log('Looking forward to the weekend!');
+    console.log("Looking forward to the weekend!");
+}
+
+// Exercise code:
+let language = "chinese";
+switch (language) {
+  case "chinese" || "mandarin":
+    console.log("MOST number of native speakers!");
+    break;
+  case "spanish":
+    console.log("2nd place in number of native speakers");
+    break;
+  case "english":
+    console.log("3rd place");
+    break;
+  case "hindi":
+    console.log("Number 4");
+    break;
+  case "arabic":
+    console.log("5th most spoken language");
+    break;
+  default:
+    console.log("Great language too :D");
 }
