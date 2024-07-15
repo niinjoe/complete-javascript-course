@@ -115,9 +115,22 @@ console.log(friends.includes("Bob"));
 const jonas = {
   firstName: "Jonas",
   lastName: "Schmedtmann",
-  age: 2037 - 1991,
+  birthYear: 1991,
   job: "teacher",
   friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  calcAge: function () {
+    return 2037 - this.birthYear;
+  },
+
+  checkLicense: function () {
+    if (this.hasDriversLicense) {
+      return "has a driver's license";
+    } else {
+      return "does not have a driver's license";
+    }
+  },
 };
 
 console.log(jonas);
@@ -149,4 +162,13 @@ console.log(jonas);
 // Challenge
 console.log(
   `Jonas has ${jonas["friends"].length} friends, and his best friend is called ${jonas["friends"][0]}`
+);
+
+// Challenge 2
+// "Jonas is a 46-year old teacher, and he has a driver's license."
+
+console.log(
+  `${jonas.firstName} is a ${jonas.calcAge()}-year old ${
+    jonas.job
+  }, and he ${jonas.checkLicense()}.`
 );
