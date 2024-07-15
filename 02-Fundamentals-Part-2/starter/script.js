@@ -110,7 +110,7 @@ console.log(friends.includes("Steven"));
 console.log(friends.includes("Bob"));
 
 
-/* Objects Section */
+/* Objects Section 
 
 const jonas = {
   firstName: "Jonas",
@@ -164,7 +164,7 @@ console.log(
 // Challenge 2
 // "Jonas is a 46-year old teacher, and he has a driver's license."
 jonas.getSummary()
-
+*/
 // CHALLENGE #3
 // Let's go back to Mark and John comparing their BMIs!
 
@@ -180,29 +180,78 @@ jonas.getSummary()
 
 // TEST DATA: Marks weighs 78 kg and is 1.69 m tall. John weighs 92 kg and is 1.95 m tall.
 
-/* Write your code below. Good luck! 🙂 */
-    
+/* Write your code below. Good luck! 🙂 
+
 const mark = {
-    fullName: "Mark Miller",
-    mass: 78,
-    height: 1.69, 
-    calcBMI: function (){
-        const bmi = this.mass/(this.height*this.height)
-        return bmi
-    } 
-}
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+  bmi: 0,
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  },
+};
 
 const john = {
-    fullName: "John Smith",
-    mass: 92,
-    height: 1.95,
-    calcBMI: function (){
-        const bmi = this.mass/(this.height*this.height)
-        return bmi
-    } 
+  fullName: "John Smith",
+  mass: 92,
+  height: 1.95,
+  bmi: 0,
+  calcBMI: function () {
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  },
+};
+
+if (mark.calcBMI() > john.calcBMI()) {
+  console.log(
+    `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi})!`
+  );
+} else {
+  console.log(
+    `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi})!`
+  );
+}
+*/
+
+// Loops Section
+// for loops keeps running while condition is TRUE
+for (let rep = 1; rep < 10; rep++) {
+  console.log(`Lifting weights repetition ${rep} 🏋️‍♀️`);
 }
 
-if (mark.calcBMI > john.calcBMI){
-    console.log(`${mark.fullName}'s BMI (${mark.calcBMI}) is higher than ${john.fullName})
-} else {
-    console.log(`${john.fullName}'s BMI (${john.calcBMI}) is higher than ${mark.fullName})
+const jonasArray = [
+  "Jonas",
+  "Schmedtmann",
+  2037 - 1991,
+  "teacher",
+  ["Michael", "Peter", "Steven"],
+  true,
+];
+const types = [];
+
+for (let i = 0; i < 5; i++) {
+  // Reading from jonas array
+  console.log(jonasArray[i], typeof jonasArray[i]);
+
+  // Fill types array
+  // types[i] = typeof jonas[i];
+  types.push(typeof jonasArray[i]);
+}
+
+console.log(types);
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+  ages.push(2020 - years[i]);
+}
+console.log(ages);
+
+// Contienue and break
+console.log("--- ONLY STRINGS ---");
+for (let i = 0; i < jonasArray.length; i++) {
+  if (typeof jonasArray[i] !== "string") continue;
+  console.log(jonasArray[i], typeof jonasArray[i]);
+}
