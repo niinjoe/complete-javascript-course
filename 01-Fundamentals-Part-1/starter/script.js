@@ -115,7 +115,7 @@ if (speaksEng === true && population1 < 50 && isIsland === false) {
 /* Use a switch statement to log the following string for the given language: */
 
 // Switch statement example:
-let day = "Wednesday";
+/*let day = "Wednesday";
 
 switch (day) {
   case "Monday":
@@ -149,3 +149,60 @@ switch (language) {
   default:
     console.log("Great language too :D");
 }
+*/
+
+// ---------------Assignments Part 2----------------
+/*Write a function called describeCountry which takes three parameters: country, population and capitalCity. Based on this input, the function returns a string with this format: 'Finland has 6 million people and its capital city is Helsinki'.
+
+Call this function 3 times, with input data for 3 different countries. Store the returned values in 3 different variables, and log them to the console.*/
+
+function describeCountry(country, population, capitalCity) {
+  return `${country} has ${population} million people and its capital city is ${capitalCity}.`;
+}
+
+console.log(describeCountry("Puerto Rico", 3.2, "San Juan"));
+console.log(describeCountry("Dominican Republic", 4.4, "Santo Domingo"));
+console.log(describeCountry("Cuba", 5.6, "La Havana"));
+
+/*The world population is 7900 million people. Create a function declaration called percentageOfWorld1 which receives a population value, and returns the percentage of the world population that the given population represents. For example, China has 1441 million people, so it's about 18.2% of the world population.
+
+To calculate the percentage, divide the given population value by 7900 and then multiply by 100.
+
+Call percentageOfWorld1 for 3 populations of countries of your choice, store the results into variables, and log them to the console.
+
+Create a function expression which does the exact same thing, called percentageOfWolrd2, and also call it with 3 country populations (can be the same populations).*/
+// function declaration
+function percentageOfWorld1(population) {
+  return (population / 7900) * 100;
+}
+percentageColombia = percentageOfWorld1(8.9);
+percentageVenezuela = percentageOfWorld1(11.3);
+percentageBrazil = percentageOfWorld1(12.5);
+
+console.log(percentageColombia, percentageVenezuela, percentageBrazil);
+
+// function expression
+const percentageOfWorld2 = function (population) {
+  return (population / 7900) * 100;
+};
+percentagePuertoRico = percentageOfWorld2(3.2);
+percentageDominicanRepublic = percentageOfWorld2(4.4);
+percentageCuba = percentageOfWorld2(5.6);
+
+console.log(percentagePuertoRico, percentageDominicanRepublic, percentageCuba);
+
+// arrow functions
+const percentageOfWorld3 = (population) => (population / 7900) * 100;
+
+/* Create a function called describePopulation. Use the function type you like the most. This function takes in two arguments: country and population, and returns a strings like this: 'China has 1441 million people, which is about 18.2% of the world'.
+
+To calculate the percentage, describePopulation calls the percentageOfWorld1 you created earlier.
+
+Call describePopulation with data for 3 countries of your choice.*/
+const describePopulation = function (country, population) {
+  return `${country} has ${population} million people, which is about ${percentageOfWorld1(
+    population
+  )}% of the world.`;
+};
+
+console.log(describePopulation("China", 1441));
