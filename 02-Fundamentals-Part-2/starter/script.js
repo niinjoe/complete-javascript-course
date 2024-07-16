@@ -165,20 +165,21 @@ console.log(
 // "Jonas is a 46-year old teacher, and he has a driver's license."
 jonas.getSummary()
 */
-// CHALLENGE #3
-// Let's go back to Mark and John comparing their BMIs!
+/*
+CHALLENGE #3
+Let's go back to Mark and John comparing their BMIs!
 
-// This time, let's use objects to implement the calculations! Remember: BMI = mass / (height * height) (mass in kg and height in meters).
+This time, let's use objects to implement the calculations! Remember: BMI = mass / (height * height) (mass in kg and height in meters).
 
-// Your tasks:
+Your tasks:
 
-// For each of them, create an object with properties for their full name, mass, and height (Mark Miller and John Smith). Name these objects as mark and john, and their properties exactly as fullName, mass and height.
+For each of them, create an object with properties for their full name, mass, and height (Mark Miller and John Smith). Name these objects as mark and john, and their properties exactly as fullName, mass and height.
 
-// Create a calcBMI method on each object to calculate the BMI (the same method on both objects). Assign the BMI value to a property called bmi (lowercase), and also return it from the method.
+Create a calcBMI method on each object to calculate the BMI (the same method on both objects). Assign the BMI value to a property called bmi (lowercase), and also return it from the method.
 
-// Log to the console who has the higher BMI, together with the full name and the respective BMI. Example: "John Smith's BMI (28.3) is higher than Mark Miller's (23.9)!".
+Log to the console who has the higher BMI, together with the full name and the respective BMI. Example: "John Smith's BMI (28.3) is higher than Mark Miller's (23.9)!".
 
-// TEST DATA: Marks weighs 78 kg and is 1.69 m tall. John weighs 92 kg and is 1.95 m tall.
+TEST DATA: Marks weighs 78 kg and is 1.69 m tall. John weighs 92 kg and is 1.95 m tall.
 
 /* Write your code below. Good luck! 🙂 
 
@@ -330,5 +331,33 @@ To calculate the average, divide the sum you calculated before by the length of 
 Call the function with the totals array.
 */
 
-bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
 let tips = [];
+let totals = [];
+
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+};
+
+for (let i = 0; i < bills.length; i++) {
+  tips.push(calcTip(bills[i]));
+  totals.push(bills[i] + tips[i]);
+}
+
+// Instructor version:
+// for (let i=0;i<bills.length;i++){
+//   const tip = calcTip(bills[i]);
+//   tips.push(tip);
+//   totals.push(bills[i] + tip);
+// }
+
+console.log(tips, totals);
+
+const calcAverage = function (arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i];
+  }
+  return sum / arr.length;
+};
+console.log(calcAverage(totals));
