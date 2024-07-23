@@ -125,7 +125,7 @@ const findExtremes = function (arr) {
 };
 
 const temps2 = [17, 21, 23, 19, 22];
-console.log(findExtremes(temps2));
+findExtremes(temps2);
 
 /*Challenge 3: Temperature Converter
 Write a function that takes an array of temperatures in Celsius and converts them to Fahrenheit. The formula to convert Celsius to Fahrenheit is: 𝐹 = 𝐶 × 9/5 + 32
@@ -138,21 +138,32 @@ const convertToFahrenheit = function(arr) {
 const celsiusTemps = [0, 20, 30, 100];
 console.log(convertToFahrenheit(celsiusTemps)); // Output: [32, 68, 86, 212]*/
 const convertToFahrenheit = function (arr) {
+  let farenheitTemps = [];
   for (let i = 0; i < arr.length; i++) {
-    return console.log(arr[i] * (9 / 5) + 32);
+    farenheitTemps.push(arr[i] * (9 / 5) + 32);
   }
+  return console.log(farenheitTemps);
 };
 
 const celsiusTemps = [0, 20, 30, 100];
-console.log(convertToFahrenheit(celsiusTemps));
+convertToFahrenheit(celsiusTemps);
+
+/* GPT improved code:
+const convertToFahrenheit = function (arr) {
+  // Use map to transform each Celsius temperature to Fahrenheit
+  const fahrenheitTemps = arr.map(temp => temp * (9 / 5) + 32);
+  return fahrenheitTemps; // Return the converted array
+};
+
+const celsiusTemps = [0, 20, 30, 100];
+const fahrenheitTemps = convertToFahrenheit(celsiusTemps); // Store the result
+console.log(fahrenheitTemps); // Log the result
+*/
 
 /*Challenge 4: Count Temperature Above Threshold
 Given an array of temperatures and a threshold, write a function that counts how many temperatures are above the threshold.
 
 Example:
-
-javascript
-Copy code
 const countAboveThreshold = function(arr, threshold) {
   // Your code here
 };
@@ -161,246 +172,158 @@ const temps = [17, 21, 23, 19, 22];
 const threshold = 20;
 console.log(countAboveThreshold(temps, threshold)); // Output: 3*/
 
+const countAboveThreshold = function (arr, threshold) {
+  let aboveThreshold = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] >= threshold) {
+      aboveThreshold += 1;
+    }
+  }
+  return aboveThreshold;
+};
+
+const temps3 = [17, 21, 23, 19, 22];
+const threshold = 20;
+console.log(countAboveThreshold(temps3, threshold)); // Output: 3
+
+/* GPT improved code:
+const countAboveThreshold = function (arr, threshold) {
+  let aboveThreshold = 0;
+  for (const temp of arr) {
+    if (temp > threshold) { // Use `>` if strictly above threshold
+      aboveThreshold += 1;
+    }
+  }
+  return aboveThreshold;
+};
+
+const temps3 = [17, 21, 23, 19, 22];
+const threshold = 20;
+console.log(countAboveThreshold(temps3, threshold)); */
+
 /*Challenge 5: Temperature Trend
 Write a function that takes an array of temperatures and returns a string describing the trend (increasing, decreasing, or no trend).
 
 Example:
-
-javascript
-Copy code
 const tempTrend = function(arr) {
+  // Your code here
+};*/
+
+const tempTrend = function (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > arr[i + 1] && arr[i + 1] > arr[i + 2]) {
+      return 'decreasing';
+    } else if (arr[i] < arr[i + 1] && arr[i + 1] < arr[i + 2]) {
+      return 'increasing';
+    } else {
+      return 'no trend';
+    }
+  }
+};
+
+const tempsA = [17, 19, 21, 23, 25];
+const tempsB = [25, 23, 21, 19, 17];
+const tempsC = [17, 21, 19, 23, 25];
+console.log(tempTrend(tempsA)); // Output: "increasing"
+console.log(tempTrend(tempsB)); // Output: "decreasing"
+console.log(tempTrend(tempsC)); // Output: "no trend"
+
+/*
+GPT improved code:
+const tempTrend = function (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > arr[i + 1] && arr[i + 1] > arr[i + 2]) {
+      return 'decreasing';
+    } else if (arr[i] < arr[i + 1] && arr[i + 1] < arr[i + 2]) {
+      return 'increasing';
+    } else {
+      return 'no trend';
+    }
+  }
+};
+
+const tempsA = [17, 19, 21, 23, 25];
+const tempsB = [25, 23, 21, 19, 17];
+const tempsC = [17, 21, 19, 23, 25];
+console.log(tempTrend(tempsA)); // Output: "increasing"
+console.log(tempTrend(tempsB)); // Output: "decreasing"
+console.log(tempTrend(tempsC)); // Output: "no trend"
+*/
+
+/*
+Challenge 1: Object Manipulation
+Write a function that takes an array of student objects and returns an array of student names who have scored above a certain threshold.
+*/
+const students = [
+  { name: 'Alice', score: 85 },
+  { name: 'Bob', score: 92 },
+  { name: 'Charlie', score: 79 },
+  { name: 'Dave', score: 95 },
+];
+
+const getTopStudents = function (students, threshold) {
+  let topStudents = [];
+  for (let i = 0; i < students.length; i++) {
+    if (students[i].score > threshold) {
+      topStudents.push(students[i].name);
+    }
+  }
+  return topStudents;
+};
+
+console.log(getTopStudents(students, 80)); // Output: ['Alice', 'Bob', 'Dave']
+
+/*Challenge 2: Higher-Order Array Methods
+Write a function that takes an array of numbers and returns the sum of all even numbers using the filter and reduce methods.
+
+Example:
+*/
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const sumOfEvens = function (numbers) {
+  return numbers
+    .filter((num) => num % 2 === 0) // Filter even numbers
+    .reduce((acc, current) => acc + current, 0); // Sum the filtered values
+};
+
+console.log(sumOfEvens(numbers)); // Output: 30
+/*
+Challenge 3: Closures
+Write a function that returns another function. The returned function should increment a counter each time it is called.
+
+Example:
+*/
+let COUNT = 0;
+const createCounter = function () {
+  const counter = function () {
+    COUNT += 1;
+  };
+  return counter;
+};
+
+const counter = createCounter();
+console.log(counter()); // Output: 1
+console.log(counter()); // Output: 2
+console.log(counter()); // Output: 3
+/*
+Challenge 4: Promises
+Write a function that returns a promise that resolves after a given number of milliseconds.
+
+Example:
+*/
+const delay = function (ms) {
   // Your code here
 };
 
-const temps1 = [17, 19, 21, 23, 25];
-const temps2 = [25, 23, 21, 19, 17];
-const temps3 = [17, 21, 19, 23, 25];
-console.log(tempTrend(temps1)); // Output: "increasing"
-console.log(tempTrend(temps2)); // Output: "decreasing"
-console.log(tempTrend(temps3)); // Output: "no trend"*/
+delay(1000).then(() => console.log('1 second has passed')); // Output: "1 second has passed" (after 1 second)
 
-/* Data Structures, Modern Operators and Strings */
-const books = [
-  {
-    title: 'Algorithms',
-    author: ['Robert Sedgewick', 'Kevin Wayne'],
-    publisher: 'Addison-Wesley Professional',
-    publicationDate: '2011-03-24',
-    edition: 4,
-    keywords: [
-      'computer science',
-      'programming',
-      'algorithms',
-      'data structures',
-      'java',
-      'math',
-      'software',
-      'engineering',
-    ],
-    pages: 976,
-    format: 'hardcover',
-    ISBN: '9780321573513',
-    language: 'English',
-    programmingLanguage: 'Java',
-    onlineContent: true,
-    thirdParty: {
-      goodreads: {
-        rating: 4.41,
-        ratingsCount: 1733,
-        reviewsCount: 63,
-        fiveStarRatingCount: 976,
-        oneStarRatingCount: 13,
-      },
-    },
-    highlighted: true,
-  },
-  {
-    title: 'Structure and Interpretation of Computer Programs',
-    author: [
-      'Harold Abelson',
-      'Gerald Jay Sussman',
-      'Julie Sussman (Contributor)',
-    ],
-    publisher: 'The MIT Press',
-    publicationDate: '2022-04-12',
-    edition: 2,
-    keywords: [
-      'computer science',
-      'programming',
-      'javascript',
-      'software',
-      'engineering',
-    ],
-    pages: 640,
-    format: 'paperback',
-    ISBN: '9780262543231',
-    language: 'English',
-    programmingLanguage: 'JavaScript',
-    onlineContent: false,
-    thirdParty: {
-      goodreads: {
-        rating: 4.36,
-        ratingsCount: 14,
-        reviewsCount: 3,
-        fiveStarRatingCount: 8,
-        oneStarRatingCount: 0,
-      },
-    },
-    highlighted: true,
-  },
-  {
-    title: "Computer Systems: A Programmer's Perspective",
-    author: ['Randal E. Bryant', "David Richard O'Hallaron"],
-    publisher: 'Prentice Hall',
-    publicationDate: '2002-01-01',
-    edition: 1,
-    keywords: [
-      'computer science',
-      'computer systems',
-      'programming',
-      'software',
-      'C',
-      'engineering',
-    ],
-    pages: 978,
-    format: 'hardcover',
-    ISBN: '9780130340740',
-    language: 'English',
-    programmingLanguage: 'C',
-    onlineContent: false,
-    thirdParty: {
-      goodreads: {
-        rating: 4.44,
-        ratingsCount: 1010,
-        reviewsCount: 57,
-        fiveStarRatingCount: 638,
-        oneStarRatingCount: 16,
-      },
-    },
-    highlighted: true,
-  },
-  {
-    title: 'Operating System Concepts',
-    author: ['Abraham Silberschatz', 'Peter B. Galvin', 'Greg Gagne'],
-    publisher: 'John Wiley & Sons',
-    publicationDate: '2004-12-14',
-    edition: 10,
-    keywords: [
-      'computer science',
-      'operating systems',
-      'programming',
-      'software',
-      'C',
-      'Java',
-      'engineering',
-    ],
-    pages: 921,
-    format: 'hardcover',
-    ISBN: '9780471694663',
-    language: 'English',
-    programmingLanguage: 'C, Java',
-    onlineContent: false,
-    thirdParty: {
-      goodreads: {
-        rating: 3.9,
-        ratingsCount: 2131,
-        reviewsCount: 114,
-        fiveStarRatingCount: 728,
-        oneStarRatingCount: 65,
-      },
-    },
-  },
-  {
-    title: 'Engineering Mathematics',
-    author: ['K.A. Stroud', 'Dexter J. Booth'],
-    publisher: 'Palgrave',
-    publicationDate: '2007-01-01',
-    edition: 14,
-    keywords: ['mathematics', 'engineering'],
-    pages: 1288,
-    format: 'paperback',
-    ISBN: '9781403942463',
-    language: 'English',
-    programmingLanguage: null,
-    onlineContent: true,
-    thirdParty: {
-      goodreads: {
-        rating: 4.35,
-        ratingsCount: 370,
-        reviewsCount: 18,
-        fiveStarRatingCount: 211,
-        oneStarRatingCount: 6,
-      },
-    },
-    highlighted: true,
-  },
-  {
-    title: 'The Personal MBA: Master the Art of Business',
-    author: 'Josh Kaufman',
-    publisher: 'Portfolio',
-    publicationDate: '2010-12-30',
-    keywords: ['business'],
-    pages: 416,
-    format: 'hardcover',
-    ISBN: '9781591843528',
-    language: 'English',
-    thirdParty: {
-      goodreads: {
-        rating: 4.11,
-        ratingsCount: 40119,
-        reviewsCount: 1351,
-        fiveStarRatingCount: 18033,
-        oneStarRatingCount: 1090,
-      },
-    },
-  },
-  {
-    title: 'Crafting Interpreters',
-    author: 'Robert Nystrom',
-    publisher: 'Genever Benning',
-    publicationDate: '2021-07-28',
-    keywords: [
-      'computer science',
-      'compilers',
-      'engineering',
-      'interpreters',
-      'software',
-      'engineering',
-    ],
-    pages: 865,
-    format: 'paperback',
-    ISBN: '9780990582939',
-    language: 'English',
-    thirdParty: {
-      goodreads: {
-        rating: 4.7,
-        ratingsCount: 253,
-        reviewsCount: 23,
-        fiveStarRatingCount: 193,
-        oneStarRatingCount: 0,
-      },
-    },
-  },
-  {
-    title: 'Deep Work: Rules for Focused Success in a Distracted World',
-    author: 'Cal Newport',
-    publisher: 'Grand Central Publishing',
-    publicationDate: '2016-01-05',
-    edition: 1,
-    keywords: ['work', 'focus', 'personal development', 'business'],
-    pages: 296,
-    format: 'hardcover',
-    ISBN: '9781455586691',
-    language: 'English',
-    thirdParty: {
-      goodreads: {
-        rating: 4.19,
-        ratingsCount: 144584,
-        reviewsCount: 11598,
-        fiveStarRatingCount: 63405,
-        oneStarRatingCount: 1808,
-      },
-    },
-    highlighted: true,
-  },
-];
+/*Challenge 5: Asynchronous Functions
+Write an asynchronous function that fetches data from a public API and logs the result.
+
+Example:
+*/
+const fetchData = async function () {
+  // Your code here
+};
+
+fetchData(); // Output: Logs data from the API
